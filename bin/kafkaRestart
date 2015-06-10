@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+#trap("SIGINT") { throw :ctrl_c }
+require_relative 'utility'
+require 'Open3'
+
+
+path_to_kafka = "/Users/johnhanrahan/Victorious/kafka_2.10-0.8.2.0/bin/kafka-server-start.sh"
+path_to_kafka_config = "/Users/johnhanrahan/Victorious/kafka_2.10-0.8.2.0/config/server.properties"
+kafka_port = 9092
+
+# killzookeeper
+kill_process_on_port kafka_port
+
+# Keep the executable in a subprocess because sometimes it becomes responsive
+# this way we can still kill ruby
+#Open3.popen3(path_to_kafka + " " + path_to_kafka_config) do |stdin, sdtout, stderr, wait_thr| 
+#end
+
+pid = ""
+begin
+  pid = fork do
+    exec(path_to_kafka + " " + path_to_kafka_config)
+    exit! 127
+  end
+  #yield pid if block_given?
+  Process.waitpid(pid)
+  $?
+rescue
+  `kill -9 #{pid.to_s}`
+  puts "THE PID IS: " + pid.to_s
+end
+
+
+
+#catch :ctrl_c do
+#  puts pid
+#end
