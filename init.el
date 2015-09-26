@@ -170,6 +170,7 @@ by Prelude.")
 (add-hook 'cider-repl-mode-hook #'subword-mode)
 ;(add-hook 'cider-repl-mode-hook (cider-mode 0))
 
+
 (defun comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
     (interactive)
@@ -208,9 +209,10 @@ by Prelude.")
 (global-linum-mode 1)
 (add-hook 'clojure-mode #'paredit-mode)
 (setq visible-bell 'top-bottom)
-
+(setq visible-bell 1)
 (global-set-key (kbd "M-o") 'other-window)
-;; fix the PATH variable
+
+	;; fix the PATH variable
 (defun set-exec-path-from-shell-PATH ()
   (let ((path-from-shell (shell-command-to-string "TERM=vt100 $SHELL -i -c 'echo $PATH'")))
     (setenv "PATH" path-from-shell)
