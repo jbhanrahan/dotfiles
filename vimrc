@@ -19,8 +19,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'wincent/command-t'
 Plugin 'L9'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-
+Plugin 'cmdalias.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -539,3 +538,15 @@ let g:mapleader = ","
 set vb
 set t_vb=
 set clipboard=unnamed
+
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+    \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+    \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+
+call SetupCommandAlias('WQ', 'wq')
+call SetupCommandAlias('wQ', 'wq')
+call SetupCommandAlias('Wq', 'wq')
+call SetupCommandAlias('W', 'w')
+call SetupCommandAlias('Q', 'q')
