@@ -33,6 +33,7 @@ export EDITOR="$VISUAL"
 
 ####### Random useful helpful commands ############
 alias subl="open -a 'Sublime Text'"
+alias htop="sudo htop"
 alias mysql="/Applications/MAMP/Library/bin/mysql --host=127.0.0.1 -uroot -proot victorious"
 alias gg="git log --all --graph --decorate --oneline"
 alias mplayerx="open -a /Applications/MPlayerX.app"
