@@ -14,13 +14,15 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 
-Bundle 'VimClojure'
+Plugin 'VimClojure'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'wincent/command-t'
 Plugin 'L9'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'cmdalias.vim'
 Plugin 'Lokaltog/vim-distinguished'
+Plugin 'nacitar/terminalkeys.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -551,3 +553,13 @@ call SetupCommandAlias('wQ', 'wq')
 call SetupCommandAlias('Wq', 'wq')
 call SetupCommandAlias('W', 'w')
 call SetupCommandAlias('Q', 'q')
+
+
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
+endif
+

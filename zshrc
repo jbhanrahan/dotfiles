@@ -41,3 +41,5 @@ alias cdt="cd ~/Victorious/TouchFramePlatform"
 alias fix_workers="start_workers"
 alias start_workers="~/Victorious/TouchFramePlatform/scripts/start_frontchannel_workers.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/; ~/Victorious/TouchFramePlatform/scripts/start_backchannel_workers.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/; ~/Victorious/TouchFramePlatform/scripts/start_backchannel_proxy.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/;"
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+export TERM=screen-256color

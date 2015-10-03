@@ -6,6 +6,7 @@ makeSymlink () {
 makeSymlink "`pwd`/init.el" ~/.emacs.d/init.el;
 makeSymlink "`pwd`/zshrc" ~/.zshrc;
 makeSymlink "`pwd`/vimrc" ~/.vimrc;
+makeSymlink "`pwd`/tmux.conf" ~/.tmux.conf;
 makeSymlink "`pwd`/bin" ~/bin;
 
 
