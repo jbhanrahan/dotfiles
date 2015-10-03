@@ -45,6 +45,8 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 ####### Random useful helpful commands ############
+alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias subl="open -a 'Sublime Text'"
 alias htop="sudo htop"
 alias mysql="/Applications/MAMP/Library/bin/mysql --host=127.0.0.1 -uroot -proot victorious"
@@ -58,4 +60,16 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export TERM=screen-256color
 
 # Print the tmux sessions on login if there are any
-tmux ls 2> /dev/null
+tmux ls 2> /dev/null;
+
+
+bak(){
+  if [ ! $# -eq 0 ]; then
+      if [ -e "$1.bak" ]; then
+        mv -f "$1".bak "$1".bak.bak
+    fi
+    cp "$1" "$1".bak
+  else
+    echo "i need some args bro";
+  fi
+}
