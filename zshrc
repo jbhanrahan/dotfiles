@@ -13,15 +13,28 @@ fuck_port() {
   lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
-export SCALA_HOME=/usr/local/opt/scala/idea
+
+if [ -d /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home ]; then
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
+fi
+
+if [ -e /usr/local/opt/scala/idea ]; then
+  export SCALA_HOME=/usr/local/opt/scala/idea
+fi
+
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.npm/bin
 export PATH=$PATH:~/.composer/vendor/bin/
-export PATH="/Applications/MAMP/bin/php/php5.6.2/bin:$PATH"
 export PATH=/usr/local/sbin:$PATH
+
+if [ -e /usr/local/opt/scala/idea ]; then
+  export PATH=/Applications/MAMP/bin/php/php5.6.2/bin:$PATH
+fi
+
+
 ##### Random values
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -43,3 +56,6 @@ alias start_workers="~/Victorious/TouchFramePlatform/scripts/start_frontchannel_
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export TERM=screen-256color
+
+# Print the tmux sessions on login if there are any
+tmux ls 2> /dev/null
