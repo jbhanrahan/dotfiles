@@ -22,7 +22,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'cmdalias.vim'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'nacitar/terminalkeys.vim'
-
+Plugin 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
