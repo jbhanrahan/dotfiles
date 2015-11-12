@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+eset nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -22,7 +22,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'cmdalias.vim'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'nacitar/terminalkeys.vim'
-Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-fireplace'
+Plugin 'paredit.vim'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
