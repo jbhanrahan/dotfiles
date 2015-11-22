@@ -13,6 +13,9 @@ fuck_port() {
   lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
+export NVM_DIR="/home/john/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
 if [ -d /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home ]; then
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
@@ -36,9 +39,6 @@ fi
 
 
 ##### Random values
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 
 export RDECK_BASE="/Users/johnhanrahan/Victorious/Rundeck/"
 export VISUAL=vim
@@ -73,3 +73,5 @@ bak(){
     echo "i need some args bro";
   fi
 }
+
+
