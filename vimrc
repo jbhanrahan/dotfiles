@@ -389,7 +389,7 @@ fun! CleverTab()
 		"return "\<C-P>"
 	endif
 endfunction
-imap <Tab> <C-R>=CleverTab()<CR>
+" imap <Tab> <C-R>=CleverTab()<CR>
 "}}}
 "CODE GREP {{{
 " grep for given string (second is case insensitive)
