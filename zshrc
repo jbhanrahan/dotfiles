@@ -13,6 +13,9 @@ fuck_port() {
   lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
+export NVM_DIR="~/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
 if [ -d /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home ]; then
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
@@ -36,9 +39,6 @@ fi
 
 
 ##### Random values
-export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 
 export RDECK_BASE="/Users/johnhanrahan/Victorious/Rundeck/"
 export VISUAL=vim
@@ -53,6 +53,8 @@ alias mysql="/Applications/MAMP/Library/bin/mysql --host=127.0.0.1 -uroot -proot
 alias gg="git log --all --graph --decorate --oneline"
 alias mplayerx="open -a /Applications/MPlayerX.app"
 alias cdt="cd ~/Victorious/TouchFramePlatform"
+alias cde="cd ~/Victorious/victorious-es"
+alias cdc="cd ~/Victorious/CMS"
 alias fix_workers="start_workers"
 alias start_workers="~/Victorious/TouchFramePlatform/scripts/start_frontchannel_workers.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/; ~/Victorious/TouchFramePlatform/scripts/start_backchannel_workers.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/; ~/Victorious/TouchFramePlatform/scripts/start_backchannel_proxy.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/;"
 
@@ -75,3 +77,5 @@ bak(){
 }
 
 source /usr/local/share/zsh/site-functions/_aws
+export ES_HEAP_SIZE=4g
+alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
