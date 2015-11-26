@@ -73,3 +73,5 @@ bak(){
     echo "i need some args bro";
   fi
 }
+
+source /usr/local/share/zsh/site-functions/_aws
