@@ -7,10 +7,10 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )" #Dir is the fully resolved path that the script is located in
 
 makeSymlink () {
-  cp -r "$1" $DIR/bak/
-  rm -rf $2;
-  mkdir -p `dirname $2`
-  ln -s $1 $2;
+  cp -r "$1" $DIR/bak/     #backup
+  rm -rf $2;               #delete the existing folder
+  mkdir -p `dirname $2`    #make sure all parent directories exist
+  ln -s $1 $2;             #make the symlink
 }
 
 rm -rf $DIR/bak/*
