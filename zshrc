@@ -78,3 +78,5 @@ eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
+/usr/bin/keychain $HOME/.ssh/id_rsa
+source $HOME/.keychain/`hostname`-sh
