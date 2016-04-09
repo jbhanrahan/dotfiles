@@ -43,6 +43,8 @@ alias cde="cd ~/Victorious/victorious-es"
 alias cdc="cd ~/Victorious/CMS"
 alias fix_workers="start_workers"
 alias start_workers="~/Victorious/TouchFramePlatform/scripts/start_frontchannel_workers.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/; ~/Victorious/TouchFramePlatform/scripts/start_backchannel_workers.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/; ~/Victorious/TouchFramePlatform/scripts/start_backchannel_proxy.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/;"
+alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
+
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export TERM=screen-256color
@@ -62,7 +64,17 @@ bak(){
   fi
 }
 
-export ES_HEAP_SIZE=1g
-alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
+if [ -d  /usr/local/share/zsh/site-functions/_aws ]; then
+  source /usr/local/share/zsh/site-functions/_aws
+fi
+
+
+
+export ES_HEAP_SIZE=4g
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
