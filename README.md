@@ -1,2 +1,2 @@
 # dotfiles
-configuration files for various programs
+configuration files for various programs...
