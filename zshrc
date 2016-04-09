@@ -24,8 +24,6 @@ if [ -d /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home ]; then
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 fi
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.npm/bin
 export PATH=$PATH:~/.composer/vendor/bin/
@@ -53,8 +51,6 @@ alias start_workers="~/Victorious/TouchFramePlatform/scripts/start_frontchannel_
 alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
 
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-export TERM=screen-256color
 
 # Print the tmux sessions on login if there are any
 #tmux ls 2> /dev/null;
@@ -80,8 +76,12 @@ fi
 export ES_HEAP_SIZE=4g
 export PATH="$HOME/.rbenv/bin:$PATH"
 
-if hash rbenv 2>/dev/null; then
-  eval "$(rbenv init -)"
+
+if [ -d $HOME/.rbenv/bin ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  if hash rbenv 2>/dev/null; then
+   eval "$(rbenv init -)"
+  fi
 fi
 
 
@@ -92,3 +92,4 @@ if [ -d  /usr/bin/keychain ]; then
   /usr/bin/keychain $HOME/.ssh/id_rsa
   source $HOME/.keychain/`hostname`-sh
 fi
+
