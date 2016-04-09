@@ -4,6 +4,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+        export TERM='xterm-256color'
+else
+        export TERM='xterm-color'
+fi
+
+
 # Customize to your needs...
 fuck() {
 	ps aux | grep -ie $1 | awk '{print $2}' | xargs kill -9
@@ -72,11 +79,16 @@ fi
 
 export ES_HEAP_SIZE=4g
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+
+if hash rbenv 2>/dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
-/usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/`hostname`-sh
+if [ -d  /usr/bin/keychain ]; then
+  /usr/bin/keychain $HOME/.ssh/id_rsa
+  source $HOME/.keychain/`hostname`-sh
+fi
