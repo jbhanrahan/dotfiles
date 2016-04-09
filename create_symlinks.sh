@@ -14,6 +14,8 @@ makeSymlink () {
 }
 
 rm -rf $DIR/bak/*
+mkdir -p $DIR/bak/
+
 makeSymlink "`pwd`/init.el" ~/.emacs.d/init.el;
 makeSymlink "`pwd`/zshrc" ~/.zshrc;
 makeSymlink "`pwd`/vimrc" ~/.vimrc;
