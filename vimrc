@@ -25,6 +25,7 @@ Plugin 'nacitar/terminalkeys.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'paredit.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'klen/python-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

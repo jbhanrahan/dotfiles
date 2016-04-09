@@ -13,18 +13,9 @@ fuck_port() {
   lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill
 }
 
-export NVM_DIR="/home/john/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
 if [ -d /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home ]; then
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 fi
-
-if [ -e /usr/local/opt/scala/idea ]; then
-  export SCALA_HOME=/usr/local/opt/scala/idea
-fi
-
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -33,14 +24,9 @@ export PATH=$PATH:~/.npm/bin
 export PATH=$PATH:~/.composer/vendor/bin/
 export PATH=/usr/local/sbin:$PATH
 
-if [ -e /usr/local/opt/scala/idea ]; then
-  export PATH=/Applications/MAMP/bin/php/php5.6.2/bin:$PATH
-fi
-
 
 ##### Random values
 
-export RDECK_BASE="/Users/johnhanrahan/Victorious/Rundeck/"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
@@ -49,7 +35,7 @@ alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc && source ~/.zshrc"
 alias subl="open -a 'Sublime Text'"
 alias htop="sudo htop"
-alias mysql="/Applications/MAMP/Library/bin/mysql --host=127.0.0.1 -uroot -proot victorious"
+#alias mysql="/Applications/MAMP/Library/bin/mysql --host=127.0.0.1 -uroot -proot victorious"
 alias gg="git log --all --graph --decorate --oneline"
 alias mplayerx="open -a /Applications/MPlayerX.app"
 alias cdt="cd ~/Victorious/TouchFramePlatform"
@@ -62,7 +48,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export TERM=screen-256color
 
 # Print the tmux sessions on login if there are any
-tmux ls 2> /dev/null;
+#tmux ls 2> /dev/null;
 
 
 bak(){
@@ -76,5 +62,7 @@ bak(){
   fi
 }
 
-export ES_HEAP_SIZE=4g
+export ES_HEAP_SIZE=1g
 alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

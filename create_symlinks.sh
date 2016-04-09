@@ -9,6 +9,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )" #Dir is the fully resolved path
 makeSymlink () {
   cp -r "$1" $DIR/bak/
   rm -rf $2;
+  mkdir -p `dirname $2`
   ln -s $1 $2;
 }
 
@@ -18,4 +19,4 @@ makeSymlink "`pwd`/zshrc" ~/.zshrc;
 makeSymlink "`pwd`/vimrc" ~/.vimrc;
 makeSymlink "`pwd`/tmux.conf" ~/.tmux.conf;
 makeSymlink "`pwd`/bin" ~/bin;
-
+makeSymlink "`pwd`/ssh.config" ~/.ssh/config;
