@@ -1,0 +1,11 @@
+[Unit]
+Description= Updates the A record entries in route53 so I can still ssh. this goes in /usr/lib/systemd/system/update_dns.service
+
+[Service]
+WorkingDirectory=/opt
+Type=forking
+ExecStart=/bin/bash ruby /opt/update_dns
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

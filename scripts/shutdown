@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+if (not `w`.split("\n").drop(2).length > 0) and (`cat /proc/uptime`.split(" ")[0].to_i > 1800)
+  puts "nobody is connected and the server has been up longer than 30 minutes"
+  open('myfile.out', 'a') { |f|
+    f.puts "were going to shutdown."
+  }
+
+  `sudo shutdown -h now`
+else
+  puts "people are connected or we havent been up long enough"
+  open('/opt/myfile.out', 'a') { |f|
+    f.puts "no shutdown.  1: " + (not `w`.split("\n").drop(2).length > 0).to_s + " 2: " + (`cat /proc/uptime`.split(" ")[0].to_i > 1800).to_s
+  }
+
+end
