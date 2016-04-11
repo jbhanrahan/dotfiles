@@ -19,3 +19,7 @@ echo "source $HOME/dotfiles/zshrc" >> ~/.zshrc;
 
 git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
 
+
+sudo cp scripts/update_dns /opt/update_dns
+sudo cp scripts/update_dns.service /usr/lib/systemd/system/update_dns.service
+sudo cp scripts/shutdown /etc/cron.hourly/
