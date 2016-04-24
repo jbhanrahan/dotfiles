@@ -1,0 +1,10 @@
+[Unit]
+Description=Checks every 5 minutes to see if a user is logged in, shuts down if no user 10 times in a row
+#Should go in /run/systemd/system.  Also needs the script installed in opt
+
+[Service]
+Type=forking
+ExecStart=/opt/shutdown_idle
+
+[Install]
+WantedBy=multi-user.target

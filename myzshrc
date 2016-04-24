@@ -29,6 +29,9 @@ export PATH=$PATH:~/.npm/bin
 export PATH=$PATH:~/.composer/vendor/bin/
 export PATH=/usr/local/sbin:$PATH
 
+#Reduce delay for input keys
+KEYTIMEOUT=1
+
 
 ##### Random values
 

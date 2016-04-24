@@ -566,3 +566,6 @@ if &term =~ '256color'
   set t_ut=
 endif
 
+
+"Escape characters sometimes take a while
+set timeoutlen=100 ttimeoutlen=0
