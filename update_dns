@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 
-## Indended to fire on AWS machine wakeup and flip the dns entries in route53 to
-#it
-
+## Indended to fire on AWS machine wakeup and flip the dns entries in route53 
 
 require 'aws-sdk'
 require 'net/http'
@@ -21,9 +19,6 @@ while ip_public.length == 0 and max_retry> 0
      sleep 3
   end
 end
-
-#puts ip_local
-#puts ip_public 
 
 
 route53 = Aws::Route53::Client.new(
