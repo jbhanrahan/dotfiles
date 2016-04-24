@@ -20,6 +20,13 @@ echo "source $HOME/dotfiles/zshrc" >> ~/.zshrc;
 git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
 
 
-sudo cp scripts/update_dns /opt/update_dns
-sudo cp scripts/update_dns.service /usr/lib/systemd/system/update_dns.service
-sudo cp scripts/shutdown /etc/cron.hourly/
+sudo cp -f `pwd`/scripts/shutdown_idle /opt/shutdown_idle
+sudo cp -f `pwd`/scripts/shutdown_idle.service /run/systemd/system/
+
+sudo cp -f `pwd`/scripts/update_dns /opt/update_dns
+sudo cp -f `pwd`/scripts/update_dns.service /run/systemd/system/
+
+sudo systemctl enable update_dns
+sudo systemctl enable shutdown_idle 
+sudo systemctl start update_dns
+sudo systemctl start shutdown_idle 

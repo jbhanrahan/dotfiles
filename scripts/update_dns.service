@@ -1,11 +1,13 @@
 [Unit]
-Description= Updates the A record entries in route53 so I can still ssh. this goes in /usr/lib/systemd/system/update_dns.service
+Description=Updates route53 dna A records to point to this machine
+# Should go in /run/systemd/system.  Also needs the script installed in opt
 
 [Service]
-WorkingDirectory=/opt
-Type=forking
-ExecStart=/bin/bash ruby /opt/update_dns
-KillMode=process
+Type=oneshot
+ExecStart=/opt/update_dns
+After=network-online.target 
+TimeoutSec="infinity"
+
 
 [Install]
 WantedBy=multi-user.target
