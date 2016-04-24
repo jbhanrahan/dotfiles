@@ -24,3 +24,4 @@ makeSymlink "`pwd`/vimrc" ~/.vimrc;
 makeSymlink "`pwd`/tmux.conf" ~/.tmux.conf;
 makeSymlink "`pwd`/bin" ~/bin;
 makeSymlink "`pwd`/ssh.config" ~/.ssh/config;
+makeSymlink "`pwd`/spacemacs"  ~/.spacemacs

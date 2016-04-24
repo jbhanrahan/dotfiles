@@ -49,7 +49,7 @@ alias cdc="cd ~/Victorious/CMS"
 alias fix_workers="start_workers"
 alias start_workers="~/Victorious/TouchFramePlatform/scripts/start_frontchannel_workers.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/; ~/Victorious/TouchFramePlatform/scripts/start_backchannel_workers.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/; ~/Victorious/TouchFramePlatform/scripts/start_backchannel_proxy.sh local -u johnhanrahan -p ~/Victorious/TouchFramePlatform/;"
 alias gitcleanbranches="git branch --merged | grep -v \* | xargs git branch -D"
-
+alias emacs="emacsclient -t"
 
 
 # Print the tmux sessions on login if there are any
@@ -73,7 +73,7 @@ fi
 
 
 
-export ES_HEAP_SIZE=4g
+export ES_HEAP_SIZE=512m
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 
