@@ -1,0 +1,39 @@
+---
+
+- name: Create Initial users
+  hosts: hanrahanio
+  tasks:
+    - name: Make sure we have a 'wheel' group
+      group:
+        name: wheel
+        state: present
+
+    - name: Allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: Add the user 'john' as part of the wheel group
+      user:
+        name: john
+        comment: John Hanrahan
+        groups: wheel
+        shell: /bin/bash
+
+    - name: Set up authorized keys for the deployer user
+      authorized_key: user=john key="{{item}}"
+      with_file:
+        - /home/john/.ssh/id_ed25519.pub
+
+    - name: Install some packages
+      package:
+        name:
+          - htop 
+          - vim 
+          - curl
+          - wget
+        state: present
+
